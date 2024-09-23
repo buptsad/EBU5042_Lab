@@ -5,5 +5,6 @@ public class CounterApp{
     counter.start();
     sleepyCounter.start();
     sleepyCounter.interrupt();
+    System.out.println("Finished");
   }
 }
