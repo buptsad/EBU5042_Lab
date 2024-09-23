@@ -4,11 +4,6 @@ public class CounterApp{
     Thread sleepyCounter = new Thread(new SleepyCounter());
     counter.start();
     sleepyCounter.start();
-    try{
-      Thread.sleep(100);
-    }catch (InterruptedException e){
-      e.printStackTrace();
-    }
     sleepyCounter.interrupt();
   }
 }
