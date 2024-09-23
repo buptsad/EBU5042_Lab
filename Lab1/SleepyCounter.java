@@ -9,6 +9,7 @@ public class SleepyCounter implements Runnable {
         Thread.sleep(50);
       } catch(InterruptedException e){
         e.printStackTrace();
+        break;
       }
     }
     return;
