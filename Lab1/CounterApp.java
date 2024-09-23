@@ -5,6 +5,12 @@ public class CounterApp{
     counter.start();
     sleepyCounter.start();
     sleepyCounter.interrupt();
+    try{
+      counter.join();
+      sleepyCounter.join();
+    }catch(InterruptedException e){
+      e.printStackTrace();
+    }
     System.out.println("Finished");
   }
 }
