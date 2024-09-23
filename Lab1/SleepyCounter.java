@@ -5,12 +5,6 @@ public class SleepyCounter implements Runnable {
     for(int i=50;i<=100;i++){
       System.out.println(count);
       count ++;
-      try{
-        Thread.sleep(50);
-      } catch(InterruptedException e){
-        e.printStackTrace();
-        break;
-      }
     }
     return;
   }
