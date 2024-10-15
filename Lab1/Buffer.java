@@ -1,10 +1,10 @@
 public class Buffer {
 
-    private char[] buf; // buffer storage
+    private int[] buf; // buffer storage
     private int last; // last occupied position
 
     public Buffer(int sz) {
-        buf = new char[sz];
+        buf = new int[sz];
         last = 0;
     }
 
@@ -16,7 +16,7 @@ public class Buffer {
         return (last == 0);
     }
 
-    public synchronized void put(char c) {
+    public synchronized void put(int c) {
         while (isFull()) {
             try {
                 wait();
@@ -26,13 +26,13 @@ public class Buffer {
         notify();
     }
 
-    public synchronized char get() {
+    public synchronized int get() {
         while (isEmpty()) {
             try {
                 wait();
             } catch (InterruptedException e) {}
         }
-        char c = buf[0];
+        int c = buf[0];
         System.arraycopy(buf, 1, buf, 0, --last);
         notify();
         return c;
