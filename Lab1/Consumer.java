@@ -7,7 +7,7 @@ public class Consumer implements Runnable {
     }
 
     public void run() {
-        for (int i = 0; i < 250; i++) {
+        for (int i = 0; i < 50; i++) {
             System.out.println(buffer.get());
         }
     }

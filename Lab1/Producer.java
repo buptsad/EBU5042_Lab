@@ -7,8 +7,8 @@ public class Producer implements Runnable {
     }
 
     public void run() {
-        for (int i = 0; i < 250; i++) {
-            buffer.put((char) ('A' + (i % 26)));
+        for (int i = 0; i < 50; i++) {
+            buffer.put(i);
         }
     }
 }
