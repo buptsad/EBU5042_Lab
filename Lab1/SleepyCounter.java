@@ -1,8 +1,8 @@
 public class SleepyCounter implements Runnable {
-  public int count = 50;
+  public int count = 10;
 
   public void run(){
-    for(int i=50;i<=100;i++){
+    for(int i=10;i<=500;i++){
       System.out.println(count);
       count ++;
       if (Thread.interrupted()){

@@ -1,7 +1,7 @@
 public class Counter extends Thread{
-  public int counter = 50;
+  public int counter = 10;
   public void run() {
-    for(int i=50;i<=100;i++){
+    for(int i=10;i<=500;i++){
       System.out.println(counter);
       counter ++;
     }
