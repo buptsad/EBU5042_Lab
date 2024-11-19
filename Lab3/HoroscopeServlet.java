@@ -12,30 +12,21 @@ public class HoroscopeServlet extends HttpServlet {
     throws ServletException, IOException {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
-        String name = req.getParameter("name");
-        if (name == null || name.isEmpty()) {
-            out.println("Please identify yourself (by indicating your name), so that your horoscope can be given!");
-            return;
-        }
-        String sex = req.getParameter("sex");
-        String sign = req.getParameter("zodiacs");
-        out.println("<html><head><title>Horoscope</title></head><body>");
-        out.println("Hello " + name + ",<br>");
-        int zodiacIndex = getHoroscopeIndex(sign);
-        if (zodiacIndex < 6){
-            if (sex.equals("Male")){
-                out.println("You will have a long life.");
-            } else {
-                out.println("You will find a tall handsome stranger.");
-            }
-        }else {
-            if (sex.equals("Male")){
-                out.println("You will have a rich life.");
-            } else {
-                out.println("You will have six children.");
-            }
-        }
-        out.println("</body></html>");
+        out.println("<html><head><title>Horoscope</title>");
+        out.println("<script>");
+        out.println("var name = '" + req.getParameter("name")+"';");
+        out.println("document.write('Hello '+name+'<br />');");
+        out.println("var zodiac = " + getHoroscopeIndex(req.getParameter("zoidacs")) + ";");
+        out.println("var gender = '" + req.getParameter("sex") + "';");
+        out.println("if (zodiac < 6){");
+        out.println("if (gender == 'Male') {document.write('You will have a long life.')}");
+        out.println("else {document.write('You will find a tall handsome stranger.')}");
+        out.println("}else{");
+        out.println("if (gender == 'Male') {document.write('You will have a rich life.')}");
+        out.println("else {document.write('You will have six children.')}");
+        out.println("}");
+        out.println("</script>");
+        out.println("</head><body></body></html>");
         return;
     }
 
