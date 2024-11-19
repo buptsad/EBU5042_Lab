@@ -5,14 +5,15 @@
         </title>
     </head>
     <body>
-        <form method="get" action="http://localhost:8080/Lab3/Horoscope">
+        <form method="get" action="http://localhost:8080/Lab3/Horoscope"
+        onsubmit="return check()">
         Input your name:
-        <input type="text">
+        <input type="text" id="name" name="name">
         <br/>
         Input your sex:
-        <input type="radio" name="sex" value="Male">
+        <input type="radio" id="Male" name="sex" value="Male">
         <label for="Male">Male</label>
-        <input type="radio" name="sex" value="Female">
+        <input type="radio" id="Female" name="sex" value="Female">
         <label for="Female">Female</label>
         <br/>
         Select your Zodiac sign: 
@@ -34,5 +35,48 @@
         <input type="submit" value="Submit">
         <input type="reset" value="Reset">
         </form>
+        <script>
+            var userName = document.getElementById("name");
+            let sex = document.querySelectorAll('input[name="sex"]');
+            
+            function checkName(userName){
+                for(var i = 0; i < userName.length; i++){
+                    if (userName.charCodeAt(i) < 65 || userName.charCodeAt(i) > 122){
+                        return false;
+                    } else if(userName.charCodeAt(i) > 90 && userName.charCodeAt(i) < 97){
+                        return false;
+                    }
+                }
+                if (userName.charCodeAt(0) < 65 || userName.charCodeAt(0) > 90){
+                    return false;
+                }
+                return true;
+            }
+
+            function checkSex(){
+                for(var i = 0; i < sex.length; i++){
+                    if(sex[i].checked){
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            function check(){
+                if(userName.value == ""){
+                    alert("Please input your name");
+                    return false;
+                }
+                if (!checkName(userName.value)){
+                    alert("The name field can only be made up of letters and must start with a capital letter");
+                    return false;
+                }
+                if (!checkSex()){
+                    alert("Please select your gender");
+                    return false;
+                }
+                return true;
+            }
+        </script>
     </body>
 </html>
